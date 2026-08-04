@@ -2,7 +2,7 @@
 :root {
   --color-bg: #F2F3F5;
   --color-ink: #1B1E22;
-  --color-accent: #B8672E;
+  --color-accent: #9B5727;
   --color-panel: #E7E9EC;
   --color-line: #C7CBD1;
   --font-body: 'IBM Plex Sans', sans-serif;
@@ -262,6 +262,6 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 }
 
 .footer-note {
-  opacity: 0.5;
+  opacity: 0.7;
   font-size: 0.75rem;
 }
