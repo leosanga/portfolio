@@ -73,6 +73,7 @@
 <section class="section">
   <p class="eyebrow">Sys / Projects</p>
   <h2>Featured Projects</h2>
+  <p class="section-note">Some workflow diagrams below are blurred or redacted. Past employer work is covered by a signed NDA, so I've kept the automation structure visible while removing client-identifying and confidential details.</p>
 
   <article class="project">
     <header class="project-header">
@@ -142,6 +143,8 @@
     <ul class="stack-tags">
       <li>n8n</li><li>RB2B</li><li>ChatGPT</li><li>Slack API</li><li>HubSpot</li>
     </ul>
+    <img class="project-diagram" src="images/outbound-prospecting-workflow.png" alt="n8n workflow diagram: a HubSpot webhook trigger feeds parallel case-study reference branches into an AI Agent, which drafts outreach and sends it to Slack">
+    <p class="diagram-caption">Workflow diagram &mdash; node labels blurred to protect client-confidential details.</p>
   </article>
 
   <article class="project">
@@ -165,6 +168,8 @@
     <ul class="stack-tags">
       <li>HubSpot Workflows</li><li>Custom Contact Properties</li><li>Salesforce API</li><li>Slack API</li>
     </ul>
+    <img class="project-diagram" src="images/lead-qualification-workflow.png" alt="HubSpot workflow diagram showing a branching lead segmentation and routing tree">
+    <p class="diagram-caption">Workflow diagram &mdash; node labels blurred to protect client-confidential details.</p>
   </article>
 </section>
 
@@ -183,17 +188,18 @@
       </ul>
     </div>
     <div class="more-project">
-      <h3>Support Ticket Pipeline Automation (HubSpot)</h3>
-      <p>Built a complete customer support ticket pipeline inside HubSpot, from intake through resolution, using workflow automation, custom properties, and automated status/routing &mdash; despite the platform's lack of native ticketing functionality.</p>
-      <ul class="stack-tags">
-        <li>HubSpot</li><li>Workflow Automation</li><li>Custom Properties</li><li>Process Mapping</li>
-      </ul>
-    </div>
-    <div class="more-project">
       <h3>Employee Onboarding Automation (Make.com)</h3>
       <p>Built an automated onboarding workflow, triggered by a new-hire form, that generates employee-specific folders and files in Google Drive, updates records, and sends a personalized welcome email.</p>
       <ul class="stack-tags">
         <li>Make.com</li><li>Google Sheets</li><li>Google Drive</li><li>Google Forms</li><li>Gmail</li>
+      </ul>
+      <img class="project-diagram" src="images/employee-onboarding-workflow.png" alt="Make.com scenario: Google Sheets watch new rows, set variable, create a Google Drive folder, send a Gmail email, update the row">
+    </div>
+    <div class="more-project" data-placeholder="support-pipeline">
+      <h3>Support Ticket Pipeline Automation (HubSpot)</h3>
+      <p>Built a complete customer support ticket pipeline inside HubSpot, from intake through resolution, using workflow automation, custom properties, and automated status/routing &mdash; despite the platform's lack of native ticketing functionality.</p>
+      <ul class="stack-tags">
+        <li>HubSpot</li><li>Workflow Automation</li><li>Custom Properties</li><li>Process Mapping</li>
       </ul>
     </div>
   </details>
