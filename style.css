@@ -85,3 +85,39 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
   font-family: var(--font-mono);
   font-size: 0.9rem;
 }
+
+/* ---- Core Skills ---- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.skill-group {
+  background: var(--color-panel);
+  border: 1px solid var(--color-line);
+  padding: 1.25rem;
+}
+
+.skill-group h3 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.skill-group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.skill-group li {
+  padding: 0.25rem 0;
+  border-top: 1px solid var(--color-line);
+}
+.skill-group li:first-child { border-top: none; }
+
+@media (max-width: 640px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
