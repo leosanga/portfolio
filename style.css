@@ -47,7 +47,10 @@ a {
   text-decoration: none;
   border-bottom: 1px solid var(--color-accent);
 }
-a:hover, a:focus { opacity: 0.8; }
+/* Hover is signalled by a thicker underline rather than reduced opacity: dimming
+   would drop the accent below the 4.5:1 AA threshold it is tuned to just clear.
+   Focus needs no text treatment — the focus-visible outline below carries it. */
+a:hover { border-bottom-width: 2px; }
 a:focus-visible, summary:focus-visible, details:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
@@ -174,7 +177,7 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-ink);
-  opacity: 0.6;
+  opacity: 0.62;
   margin-bottom: 0.4rem;
 }
 
