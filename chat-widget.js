@@ -45,7 +45,13 @@
         body: JSON.stringify({ question: question }),
         signal: controller.signal
       })
-        .then(function (response) { return response.json(); })
+        .then(function (response) {
+          if (!response.ok) {
+            console.warn('Chat widget: webhook returned', response.status);
+            throw new Error('Non-OK response: ' + response.status);
+          }
+          return response.json();
+        })
         .then(function (data) {
           assistantEntry.textContent = 'Assistant: ' + (data.answer || "Sorry, I couldn't generate a response right now.");
         })
@@ -64,5 +70,13 @@
     form.addEventListener('submit', handleSubmit);
   }
 
-  document.querySelectorAll('.chat-widget').forEach(initChatWidget);
+  function init() {
+    document.querySelectorAll('.chat-widget').forEach(initChatWidget);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
