@@ -225,3 +225,31 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 }
 .more-project h3 { font-size: 1rem; margin-bottom: 0.5rem; }
 .more-project p { font-size: 0.9rem; }
+
+/* ---- Experience ---- */
+.timeline-entry {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1.5rem;
+  border-top: 1px solid var(--color-line);
+  padding: 1.5rem 0;
+}
+
+.timeline-dates {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.timeline-entry h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+.timeline-org {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .timeline-entry { grid-template-columns: 1fr; gap: 0.25rem; }
+}
