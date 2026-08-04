@@ -1,0 +1,71 @@
+/* ---- Design tokens ---- */
+:root {
+  --color-bg: #F2F3F5;
+  --color-ink: #1B1E22;
+  --color-accent: #B8672E;
+  --color-panel: #E7E9EC;
+  --color-line: #C7CBD1;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #15171B;
+    --color-ink: #E7E9EC;
+    --color-accent: #D08A54;
+    --color-panel: #1D2024;
+    --color-line: #2A2E34;
+  }
+}
+
+/* ---- Reset ---- */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+
+/* ---- Base typography ---- */
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-wrap: balance;
+  margin: 0;
+}
+
+p { max-width: 65ch; margin: 0 0 1rem 0; }
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+}
+a:hover, a:focus { opacity: 0.8; }
+a:focus-visible, summary:focus-visible, details:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ---- Shared layout ---- */
+.section {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
