@@ -121,3 +121,83 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 @media (max-width: 640px) {
   .skills-grid { grid-template-columns: 1fr; }
 }
+
+/* ---- Featured Projects ---- */
+.project {
+  border-top: 1px solid var(--color-line);
+  padding: 2rem 0;
+}
+
+.project-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-header h3 { font-size: 1.25rem; }
+
+.status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 0.15rem 0.5rem;
+}
+
+.pipeline {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.pipeline-step { position: relative; }
+
+.pipeline-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 0.6rem;
+  right: -0.85rem;
+  width: 0.7rem;
+  height: 1px;
+  background: var(--color-line);
+}
+
+.pipeline-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  opacity: 0.6;
+  margin-bottom: 0.4rem;
+}
+
+.pipeline-step p { font-size: 0.9rem; max-width: none; }
+
+.stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+
+.stack-tags li {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: var(--color-panel);
+  border: 1px solid var(--color-line);
+  padding: 0.2rem 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .pipeline { grid-template-columns: 1fr; gap: 1rem; }
+  .pipeline-step:not(:last-child)::after { display: none; }
+}
