@@ -215,11 +215,13 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
   color: var(--color-accent);
   font-family: var(--font-mono);
 }
-.more-projects[open] summary::before { content: "\2212 "; }
+.more-projects[open] summary::before { content: "\2212\00a0"; }
+
+.more-projects-title { display: inline; font: inherit; margin: 0; }
 
 .more-project {
   border-top: 1px solid var(--color-line);
   padding: 1.25rem 0;
 }
-.more-project h4 { font-size: 1rem; margin-bottom: 0.5rem; }
+.more-project h3 { font-size: 1rem; margin-bottom: 0.5rem; }
 .more-project p { font-size: 0.9rem; }
