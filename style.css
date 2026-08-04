@@ -2,6 +2,7 @@
 :root {
   --color-bg: #F2F3F5;
   --color-ink: #1B1E22;
+  /* Tuned to just clear 4.5:1 AA contrast on --color-bg; re-check contrast before lightening. */
   --color-accent: #9B5727;
   --color-panel: #E7E9EC;
   --color-line: #C7CBD1;
@@ -177,6 +178,7 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-ink);
+  /* Lowest opacity that still clears 4.5:1 AA against --color-panel; don't dim further. */
   opacity: 0.62;
   margin-bottom: 0.4rem;
 }
@@ -265,6 +267,7 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 }
 
 .footer-note {
+  /* Raised to 0.7 to clear 4.5:1 AA at this small size; re-check contrast before lowering. */
   opacity: 0.7;
   font-size: 0.75rem;
 }
