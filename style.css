@@ -8,6 +8,18 @@
   --color-line: #C7CBD1;
   --font-body: 'IBM Plex Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Type scale: named so every font-size in this file traces back to one system. */
+  --text-2xs: 0.75rem;
+  --text-xs: 0.85rem;
+  --text-sm: 0.9rem;
+  --text-base: 1rem;
+  --text-md: 1.1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-display: clamp(2.5rem, 5vw, 3.5rem);
+
+  --ease: 150ms ease;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,12 +37,16 @@
 html, body { margin: 0; padding: 0; }
 img { max-width: 100%; display: block; }
 
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
 /* ---- Base typography ---- */
 body {
   background: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--text-base);
   line-height: 1.6;
 }
 
@@ -38,8 +54,11 @@ h1, h2, h3 {
   font-family: var(--font-body);
   font-weight: 700;
   text-wrap: balance;
+  letter-spacing: -0.01em;
   margin: 0;
 }
+
+h2 { font-size: var(--text-xl); }
 
 p { max-width: 65ch; margin: 0 0 1rem 0; }
 
@@ -47,6 +66,7 @@ a {
   color: var(--color-accent);
   text-decoration: none;
   border-bottom: 1px solid var(--color-accent);
+  transition: border-bottom-width var(--ease);
 }
 /* Hover is signalled by a thicker underline rather than reduced opacity: dimming
    would drop the accent below the 4.5:1 AA threshold it is tuned to just clear.
@@ -75,7 +95,7 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 }
 
 .section-note {
-  font-size: 0.85rem;
+  font-size: var(--text-xs);
   opacity: 0.7;
   max-width: 42rem;
   margin-top: 0.5rem;
@@ -88,13 +108,32 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: var(--text-display);
+  letter-spacing: -0.02em;
   margin-bottom: 1rem;
+}
+
+/* Terminal cursor: the one deliberate flourish, echoing the "systems" idiom
+   used in the eyebrow labels throughout. Sized in em so it tracks the h1's
+   own clamp()'d size instead of a fixed px/rem value. */
+.hero h1::after {
+  content: "";
+  display: inline-block;
+  width: 0.16em;
+  height: 0.78em;
+  margin-left: 0.1em;
+  background: var(--color-accent);
+  vertical-align: -0.08em;
+  animation: cursor-blink 1.1s steps(1) infinite;
+}
+
+@keyframes cursor-blink {
+  50% { opacity: 0; }
 }
 
 .hero-links {
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
 }
 
 /* ---- Core Skills ---- */
@@ -112,7 +151,7 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 }
 
 .skill-group h3 {
-  font-size: 1rem;
+  font-size: var(--text-base);
   margin-bottom: 0.75rem;
 }
 
@@ -120,7 +159,7 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
 }
 
 .skill-group li {
@@ -147,11 +186,11 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
   flex-wrap: wrap;
 }
 
-.project-header h3 { font-size: 1.25rem; }
+.project-header h3 { font-size: var(--text-lg); }
 
 .status-badge {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-2xs);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-accent);
@@ -181,7 +220,7 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 .pipeline-label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-2xs);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-ink);
@@ -190,7 +229,7 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
   margin-bottom: 0.4rem;
 }
 
-.pipeline-step p { font-size: 0.9rem; max-width: none; }
+.pipeline-step p { font-size: var(--text-sm); max-width: none; }
 
 .stack-tags {
   display: flex;
@@ -203,7 +242,7 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 
 .stack-tags li {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-2xs);
   background: var(--color-panel);
   border: 1px solid var(--color-line);
   padding: 0.2rem 0.5rem;
@@ -213,11 +252,26 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
   width: 100%;
   border: 1px solid var(--color-line);
   margin-top: 1rem;
+  padding: 0.5rem;
+  background: var(--color-panel);
+  transition: border-color var(--ease);
+}
+
+/* The source screenshots are light-canvas n8n/HubSpot exports; rendered at
+   full brightness they read as a lit window in an otherwise near-black page.
+   The panel-colored mat (padding + background above) gives the image a
+   frame to sit inside instead of touching the dark page directly; the
+   filter here is a display-only dim — it doesn't touch the underlying
+   image files — so brighter canvases don't blow out against the page. */
+@media (prefers-color-scheme: dark) {
+  .project-diagram {
+    filter: brightness(0.8) contrast(0.94);
+  }
 }
 
 .diagram-caption {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-2xs);
   opacity: 0.6;
   margin-top: 0.4rem;
 }
@@ -230,10 +284,12 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 /* ---- More Projects ---- */
 .more-projects summary {
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   font-weight: 600;
   list-style: none;
+  transition: color var(--ease);
 }
+.more-projects summary:hover { color: var(--color-accent); }
 .more-projects summary::-webkit-details-marker { display: none; }
 .more-projects summary::before {
   content: "+ ";
@@ -248,8 +304,8 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
   border-top: 1px solid var(--color-line);
   padding: 1.25rem 0;
 }
-.more-project h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-.more-project p { font-size: 0.9rem; }
+.more-project h3 { font-size: var(--text-base); margin-bottom: 0.5rem; }
+.more-project p { font-size: var(--text-sm); }
 
 /* ---- Experience ---- */
 .timeline-entry {
@@ -262,15 +318,15 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 
 .timeline-dates {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--text-xs);
   opacity: 0.7;
   margin: 0;
 }
 
-.timeline-entry h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+.timeline-entry h3 { font-size: var(--text-md); margin-bottom: 0.25rem; }
 .timeline-org {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--text-xs);
   color: var(--color-accent);
   margin-bottom: 0.5rem;
 }
@@ -283,13 +339,13 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 .footer {
   border-top: 1px solid var(--color-line);
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--text-xs);
 }
 
 .footer-note {
   /* Raised to 0.7 to clear 4.5:1 AA at this small size; re-check contrast before lowering. */
   opacity: 0.7;
-  font-size: 0.75rem;
+  font-size: var(--text-2xs);
 }
 
 /* ---- Chat Widget ---- */
@@ -310,7 +366,7 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 }
 
 .chat-message {
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   max-width: none;
   margin: 0;
 }
@@ -326,11 +382,12 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 .chat-input {
   flex: 1;
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   padding: 0.5rem 0.6rem;
   border: 1px solid var(--color-line);
   background: var(--color-bg);
   color: var(--color-ink);
+  transition: border-color var(--ease);
 }
 
 .chat-input:focus-visible {
@@ -343,7 +400,7 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
    clear 4.5:1 AA in this reversed pairing too. */
 .chat-submit {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   background: var(--color-accent);
@@ -351,7 +408,11 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
+  transition: opacity var(--ease), transform var(--ease);
 }
+
+.chat-submit:hover:not(:disabled) { opacity: 0.85; }
+.chat-submit:active:not(:disabled) { transform: translateY(1px); }
 
 .chat-submit:disabled,
 .chat-input:disabled {
@@ -361,7 +422,7 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 
 .chat-hint {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--text-2xs);
   opacity: 0.6;
   margin: 0.6rem 0 0 0;
 }
