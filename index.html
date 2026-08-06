@@ -110,6 +110,30 @@
 
   <article class="project">
     <header class="project-header">
+      <h3>Marketing Agent with Self-Extending Skill Library (Python/FastAPI)</h3>
+    </header>
+    <div class="pipeline">
+      <div class="pipeline-step">
+        <span class="pipeline-label">Problem</span>
+        <p>My other projects are no-code automation (n8n, HubSpot, Make.com) &mdash; strong on RevOps, but no evidence I can actually write and secure code, which is where AI-agent work increasingly lives.</p>
+      </div>
+      <div class="pipeline-step">
+        <span class="pipeline-label">Build</span>
+        <p>A Groq-backed agent answers marketing/CRM questions over a synthetic dataset via RAG (embedded Chroma). When no existing tool fits, it drafts a new Python function itself, statically validates it with an AST-based safety check, and runs it in a restricted, timeout-bounded sandbox &mdash; then keeps it for next time. Built task-by-task with an implementer/reviewer subagent loop; two independently demonstrated sandbox-escape exploits (frame reflection, string-format reflection) were caught in review and closed before ship.</p>
+      </div>
+      <div class="pipeline-step">
+        <span class="pipeline-label">Result</span>
+        <p>57 tests passing, fail-closed error handling throughout, origin-gated API. First project proving hands-on Python/AI-engineering ability, not just workflow configuration.</p>
+      </div>
+    </div>
+    <ul class="stack-tags">
+      <li>Python</li><li>FastAPI</li><li>Groq API</li><li>Chroma (vector DB)</li><li>Docker</li>
+    </ul>
+    <p><a href="https://github.com/leosanga/marketing-agent-skill-library" target="_blank" rel="noopener">Source on GitHub</a></p>
+  </article>
+
+  <article class="project">
+    <header class="project-header">
       <h3>Automated Client Implementation Delivery System (n8n)</h3>
     </header>
     <div class="pipeline">
