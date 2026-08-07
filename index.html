@@ -115,20 +115,30 @@
     <div class="pipeline">
       <div class="pipeline-step">
         <span class="pipeline-label">Problem</span>
-        <p>My other projects are no-code automation (n8n, HubSpot, Make.com) &mdash; strong on RevOps, but no evidence I can actually write and secure code, which is where AI-agent work increasingly lives.</p>
+        <p>The automation work (n8n, HubSpot, Make.com) is workflow-level. This project goes a layer deeper: an agent that drafts, validates, and sandboxes its own Python at runtime.</p>
       </div>
       <div class="pipeline-step">
         <span class="pipeline-label">Build</span>
-        <p>A Groq-backed agent answers marketing/CRM questions over a synthetic dataset via RAG (embedded Chroma). When no existing tool fits, it drafts a new Python function itself, statically validates it with an AST-based safety check, and runs it in a restricted, timeout-bounded sandbox &mdash; then keeps it for next time. Built task-by-task with an implementer/reviewer subagent loop; two independently demonstrated sandbox-escape exploits (frame reflection, string-format reflection) were caught in review and closed before ship.</p>
+        <p>Designed and built an AI agent with retrieval-augmented search, self-writing tool capability, and a sandboxed execution environment for safety. Identified and fixed two security vulnerabilities during testing.</p>
       </div>
       <div class="pipeline-step">
         <span class="pipeline-label">Result</span>
-        <p>57 tests passing, fail-closed error handling throughout, origin-gated API. First project proving hands-on Python/AI-engineering ability, not just workflow configuration.</p>
+        <p>Built to production standards: thorough automated testing, secure error handling, and restricted access throughout.</p>
       </div>
     </div>
     <ul class="stack-tags">
       <li>Python</li><li>FastAPI</li><li>Groq API</li><li>Chroma (vector DB)</li><li>Docker</li>
     </ul>
+    <div class="scenario-widget" data-api-url="https://marketing-agent-skill-library.onrender.com/chat">
+      <div class="chat-log" role="log" aria-live="polite" aria-label="Marketing agent responses"></div>
+      <div class="scenario-buttons">
+        <button type="button" class="scenario-button" data-scenario-id="top_leads">Which leads should we prioritize this week?</button>
+        <button type="button" class="scenario-button" data-scenario-id="best_campaign">Which campaign is performing best?</button>
+        <button type="button" class="scenario-button" data-scenario-id="email_sequence_vp">Draft outreach for VP Marketing leads</button>
+        <button type="button" class="scenario-button" data-scenario-id="campaign_roi">What's the estimated ROI of our top campaign?</button>
+      </div>
+      <p class="chat-hint">Answers come from a live agent that can write and run its own code when no existing tool fits. May take up to a minute to wake up if idle.</p>
+    </div>
     <p><a href="https://github.com/leosanga/marketing-agent-skill-library" target="_blank" rel="noopener">Source on GitHub</a></p>
   </article>
 
@@ -252,5 +262,6 @@
 </footer>
 
 <script src="chat-widget.js" defer></script>
+<script src="scenario-widget.js" defer></script>
 </body>
 </html>

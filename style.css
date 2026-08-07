@@ -349,7 +349,8 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 }
 
 /* ---- Chat Widget ---- */
-.chat-widget {
+.chat-widget,
+.scenario-widget {
   margin-top: 1.5rem;
   border: 1px solid var(--color-line);
   background: var(--color-panel);
@@ -416,6 +417,34 @@ a:focus-visible, summary:focus-visible, details:focus-visible {
 
 .chat-submit:disabled,
 .chat-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.scenario-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.scenario-button {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--ease), color var(--ease);
+}
+
+.scenario-button:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.scenario-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
